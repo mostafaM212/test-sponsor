@@ -1,0 +1,9 @@
+<div class="w-100">
+       <div class="row pt-4 px-3 row-gap-2">
+              @for( sponsor of sponsors(); track sponsor.id){
+                     <div class="col-lg-4 col-md-3 col-2">
+                            <app-sponsor-card [sponsor]="sponsor" />
+                     </div>
+              }
+       </div>
+</div>

@@ -1,0 +1,35 @@
+@if(sponsor){
+       <div class="card border-0 rounded-2 p-3">
+              <div class="row ">
+                     <div class="col-6 d-flex">
+                            <mat-icon class="text-success">check_small</mat-icon>
+                            <span class="text-success">{{sponsor.sponsor_type}}</span>
+                     </div>
+                     <div class="col-6  d-flex">
+                            <mat-icon>call</mat-icon>
+                            <span>{{sponsor.phone}}</span>
+                     </div>
+              </div>
+              <div class="row my-2">
+                     <div class="col-12 d-flex">
+                            <mat-icon>person</mat-icon>
+
+                            <p class="name">{{sponsor.sponsor_name}}</p>
+                     </div>
+                     
+              </div>
+              <div class="row">
+                     <div class="col-6 d-flex">
+                            <mat-icon>email</mat-icon>
+
+                            <p>{{displayEmail(sponsor.email)}}</p>
+                     </div>
+                     <div class="col-6 d-flex">
+                            <mat-icon>person</mat-icon>
+
+                            <p>{{sponsor.postal_code}}</p>
+                     </div>
+                     
+              </div>
+       </div>
+}

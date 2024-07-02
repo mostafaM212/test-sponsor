@@ -1,0 +1,119 @@
+<div class="w-100 mt-4">
+       <h3 class="text-primary text-center">Create Sponsor</h3>
+       <div class="row  d-flex justify-content-center align-items-center">
+              <div class="col-lg-8 col-12 d-flex justify-content-center align-items-center">
+                     <form [formGroup]="sponsorForm">
+                            <div class="row">
+                                   <div class="col-lg-4 col-md-6 col-12">
+                                          <mat-form-field appearance="outline" class="w-100">
+                                                 <mat-label>Sponsor name</mat-label>
+                                                 <input matInput placeholder="Sponsor name" formControlName="sponsor_name">
+                                                 @if(sponsorForm.get('sponsor_name')?.invalid && sponsorForm.get('sponsor_name')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                          </mat-form-field>
+                                   </div>
+                                   <div class="col-lg-4 col-md-6 col-12">
+                                          
+                                          <mat-form-field appearance="outline" class="w-100">
+                                                 <mat-label>Sponsor type</mat-label>
+                                                 <mat-select formControlName="sponsor_type">
+                                                   <mat-option value="legal">legal</mat-option>
+
+                                                 </mat-select>
+                                                 @if(sponsorForm.get('sponsor_type')?.invalid && sponsorForm.get('sponsor_type')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                               </mat-form-field>
+                                   </div>
+                                   <div class="col-lg-4 col-md-6 col-12">
+                                          <mat-form-field appearance="outline" class="w-100">
+                                                 <mat-label>Sponsor ID</mat-label>
+                                                 <input matInput placeholder="Sponsor ID" formControlName="sponsor_ID">
+                                                 @if(sponsorForm.get('sponsor_ID')?.invalid && sponsorForm.get('sponsor_ID')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                          </mat-form-field>
+                                   </div>
+                                   <div class="col-lg-4 col-md-6 col-12">
+                                          <mat-form-field appearance="outline" class="w-100">
+                                                 <mat-label>Address</mat-label>
+                                                 <input matInput placeholder="Placeholder" formControlName="address">
+                                                 @if(sponsorForm.get('address')?.invalid && sponsorForm.get('address')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                          </mat-form-field>
+                                   </div>
+                                   <div class="col-lg-4 col-md-6 col-12">
+                                          <mat-form-field appearance="outline" class="w-100">
+                                                 <mat-label>Sponsor email</mat-label>
+                                                 <input matInput placeholder="email" type="email" formControlName="email">
+                                                 <mat-icon matSuffix>email</mat-icon>
+                                                 @if(sponsorForm.get('email')?.invalid && sponsorForm.get('email')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                          </mat-form-field>
+                                   </div>
+                                   <div class="col-lg-4 col-md-6 col-12">
+                                          <mat-form-field appearance="outline" class="w-100">
+                                                 <mat-label>Sponsor postal code</mat-label>
+                                                 <input matInput placeholder="Placeholder" formControlName="postal_code">
+                                                 @if(sponsorForm.get('postal_code')?.invalid && sponsorForm.get('postal_code')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                          </mat-form-field>
+                                   </div>
+                                   <div class="col-lg-4 col-md-6 col-12">
+
+                                          <mat-form-field appearance="outline"  class="w-100">
+                                                 <mat-label>phone</mat-label>
+                                                 <input matInput placeholder="Placeholder" formControlName="phone">
+                                                 <mat-icon matSuffix>call</mat-icon>
+                                                 @if(sponsorForm.get('phone')?.invalid && sponsorForm.get('phone')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                          </mat-form-field>
+                                   
+                                   </div>
+                                   <div class="col-lg-4 col-md-6 col-12">
+                                          <mat-form-field appearance="outline" class="w-100">
+                                                 <mat-label>Sponsor max limit</mat-label>
+                                                 <input matInput placeholder="Placeholder" type="number" min="0" formControlName="max_limit">
+                                                 @if(sponsorForm.get('max_limit')?.invalid && sponsorForm.get('max_limit')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                          </mat-form-field>
+                                   </div>
+                                   <div class="col-lg-4 col-md-6 col-12">
+                                          <mat-form-field appearance="outline" class="w-100">
+                                                 <mat-label>Sponsor financial limit</mat-label>
+                                                 <input matInput placeholder="Placeholder" type="number" min="0" formControlName="financial_limit">
+                                                 @if(sponsorForm.get('financial_limit')?.invalid && sponsorForm.get('financial_limit')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                          </mat-form-field>
+                                   </div>
+                                   <div class="col-lg-4 col-md-6 col-12">
+                                          <mat-form-field appearance="outline" class="w-100">
+                                                 <mat-label>Sponsor time limit</mat-label>
+                                                 <input matInput placeholder="Placeholder" type="number" [min]="0" [max]="27" formControlName="time_limit">
+                                                 @if(sponsorForm.get('time_limit')?.invalid && sponsorForm.get('time_limit')?.touched){
+                                                        <mat-error >this field is required</mat-error>
+                                                 }
+                                          </mat-form-field>
+                                   </div>
+                                   <div class="col-12 d-flex justify-content-center align-items-center">
+                                          <button mat-flat-button color="primary" (click)="save()" [disabled]="isLoading">
+                                                 @if(!isLoading){
+                                                        save
+                                                 }@else {
+                                                        <mat-spinner [diameter]="20"></mat-spinner>
+
+                                                 }
+                                          </button>
+                                   </div>
+                            </div>
+                     </form>
+              </div>
+       </div>
+</div>
