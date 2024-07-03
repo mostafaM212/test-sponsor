@@ -1,9 +1,31 @@
 <div class="w-100">
+      
        <div class="row pt-4 px-3 row-gap-2">
-              @for( sponsor of sponsors(); track sponsor.id){
-                     <div class="col-lg-4 col-md-3 col-2">
-                            <app-sponsor-card [sponsor]="sponsor" />
+              <div class="col-12">
+                     <div class="w-100 d-flex justify-content-center align-items-center">
+                            <mat-form-field appearance="outline">
+                                   <mat-label>Search</mat-label>
+                                   <input matInput placeholder="Search" #search (keyup)="onSearch(search.value)">
+                                   <mat-icon matSuffix>search</mat-icon>
+                                   
+                            </mat-form-field>
                      </div>
+              </div>
+              @if(!searchedSponsors().length){
+                     @for( sponsor of sponsors() | paginate: { itemsPerPage: 5, currentPage: p }; track sponsor.id){
+                            <div class="col-lg-4 col-md-3 col-12">
+                                   <app-sponsor-card [sponsor]="sponsor" />
+                            </div>
+                     }
+              }@else{
+                     @for( sponsor of searchedSponsors(); track sponsor.id){
+                            <div class="col-lg-4 col-md-3 col-12">
+                                   <app-sponsor-card [sponsor]="sponsor" />
+                            </div>
+                     }
               }
+              <div class="col-12 d-flex justify-content-center align-items-center mt-5">
+                     <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
        </div>
 </div>
